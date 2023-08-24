@@ -10,3 +10,7 @@ class Event(BaseModel):
     time = time
     description = description
     attendees = attendees
+
+    def __init__(self, *args, **kwargs):
+        """ Class constructor """
+        super().__init__(*args, **kwargs)

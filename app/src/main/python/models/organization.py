@@ -21,3 +21,7 @@ class Organization(BaseModel):
     email = ""
     website = ""
     customization = ""
+
+    def __init__(self, *args, **kwargs):
+        """ Class constructor """
+        super().__init__(*args, **kwargs)

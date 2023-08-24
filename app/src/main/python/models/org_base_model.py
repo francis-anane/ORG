@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is the base model class for ORG API"""
+"""This is the base model class for ORG API models"""
 
 import uuid
 import models
@@ -20,6 +20,7 @@ class BaseModel:
             created_at: The time an object was created
             updated_at: The time an object was updated
         """
+        # create an object from key/value pairs if provided
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -32,27 +33,29 @@ class BaseModel:
                 self.created_at = datetime.now()
             if "updated_at" not in kwargs:
                 self.updated_at = datetime.now()
+
+        # create a new object if key/value pairs are not provided
         else:
             self.id = str(uuid.uuid4())
             self.created_at = self.updated_at = datetime.now()
 
     def __str__(self):
-        """Return string representation of the class instance"""
+        """ Return string representation of the class instance"""
         return "[{}] ({}) {}".format(
             type(self).__name__, self.id, self.__dict__)
 
     def __repr__(self):
-        """return string representation"""
+        """ Return string representation of object"""
         return self.__str__()
 
     def save(self):
-        """Save object updates"""
+        """ Save object updates """
         self.updated_at = datetime.now()
         models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
-        """Return dictionary representation of object"""
+        """ Return dictionary representation of object """
         obj_dict = {}  # holds dictionary representation of object
         obj_dict.update(self.__dict__)
         # convert datetime objects to string (created_at and updated_at)
