@@ -2,17 +2,9 @@
 """
 initialize the models package
 """
+from models.org_engine.file_storage import FileStorage
 
-from os import getenv
+storage = FileStorage()  # Unique instance for FileStorage
 
-# Set data storage type (file / db storage)
-storage_type = getenv("ORG_TYPE_STORAGE")
-
-if storage_type == "db":
-    from models.engine.db_storage import DBStorage
-    storage = DBStorage()
-else:
-    from models.engine.file_storage import FileStorage
-    storage = FileStorage()
-
-storage.reload() # reload data from storage
+# Load data from JSON file into memory
+storage.reload()
