@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="event_styles.css">
+    <title>ORG App</title>
+</head>
+<body>
+    <header>
+        <h1>ORG App</h1>
+    </header>
+    <main>
+        <section class="events">
+            <h2>Events</h2>
+            <ul class="event-list">
+                <li class="event">
+                    <h3>Team Meeting</h3>
+                    <p>Date: 2023-08-25</p>
+                    <p>Time: 15:00</p>
+                    <p>Description: Discuss project updates.</p>
+                    <p>Attendees: John Doe, Jane Smith</p>
+                </li>
+                <!-- Add more events here -->
+            </ul>
+        </section>
+        <section class="add-event">
+            <h2>Add New Event</h2>
+            <form>
+                <label for="eventTitle">Title:</label>
+                <input type="text" id="eventTitle" name="eventTitle" required>
+                <label for="eventDate">Date:</label>
+                <input type="date" id="eventDate" name="eventDate" required>
+                <label for="eventTime">Time:</label>
+                <input type="time" id="eventTime" name="eventTime" required>
+                <label for="eventDescription">Description:</label>
+                <textarea id="eventDescription" name="eventDescription" required></textarea>
+                <button type="submit">Add Event</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 ORG App</p>
+    </footer>
+</body>
+</html>

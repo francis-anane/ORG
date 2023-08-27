@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
     id 'com.chaquo.python'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -9,16 +9,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.abstratsystems.org"
-        minSdk 30
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
         // added config for python support on in app
         ndk {
             // set abi filters in build.gradle, syntax is specific to kotlin style
@@ -27,7 +18,7 @@ android {
         // Config added for python support on app
         python {
             version "3.10"
-            //buildPython "bin/python3.8"
+            //buildPython "/usr/bin/python3.8"
 
             pip {
                 // install packages
@@ -35,6 +26,7 @@ android {
                 install "requests"
                 install "gunicorn"
                 install "sqlalchemy"
+                install "flask_cors"
 
             }
 
@@ -47,7 +39,16 @@ android {
             }
         }
          */
+        applicationId "com.abstratsystems.org"
+        minSdk 30
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
 
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
     buildTypes {
