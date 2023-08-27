@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="org_styles.css">
+    <title>ORG App</title>
+</head>
+<body>
+    <header>
+        <h1>ORG App</h1>
+    </header>
+    <main>
+        <section class="organization">
+            <h2>Organization Details</h2>
+            <div class="organization-details">
+                <h3>My Organization</h3>
+                <p>Head: John Doe</p>
+                <p>Phone: +123456789</p>
+                <p>Email: info@example.org</p>
+                <p>Website: www.example.org</p>
+                <p>Customization: Branding details</p>
+            </div>
+        </section>
+        <section class="add-organization">
+            <h2>Add New Organization</h2>
+            <form>
+                <label for="orgName">Name:</label>
+                <input type="text" id="orgName" name="orgName" required>
+                <label for="orgHead">Head:</label>
+                <input type="text" id="orgHead" name="orgHead" required>
+                <label for="orgPhone">Phone:</label>
+                <input type="tel" id="orgPhone" name="orgPhone" required>
+                <label for="orgEmail">Email:</label>
+                <input type="email" id="orgEmail" name="orgEmail" required>
+                <label for="orgWebsite">Website:</label>
+                <input type="url" id="orgWebsite" name="orgWebsite" required>
+                <label for="orgCustomization">Customization:</label>
+                <textarea id="orgCustomization" name="orgCustomization" required></textarea>
+                <button type="submit">Add Organization</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 ORG App</p>
+    </footer>
+</body>
+</html>

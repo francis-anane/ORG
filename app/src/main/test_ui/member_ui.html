@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/member_styles.css">
+
+    <title>ORG App</title>
+</head>
+<body>
+    <header>
+        <h1>ORG App</h1>
+    </header>
+    <main>
+        <section class="members">
+            <h2>Members</h2>
+            <ul class="member-list">
+                <li class="member">
+                    <h3>John Doe</h3>
+                    <p>Role: Manager</p>
+                    <p>Email: john@example.com</p>
+                </li>
+                <!-- Add more members here -->
+            </ul>
+        </section>
+        <section class="add-member">
+            <h2>Add New Member</h2>
+            <form id="memberForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="role">Role:</label>
+                <input type="text" id="role" name="role" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Add Member</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <script type="text/javascript" src="./scripts/member.js"></script>
+        <p>&copy; 2023 ORG App</p>
+    </footer>
+</body>
+</html>
