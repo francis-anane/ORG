@@ -7,14 +7,13 @@ import json
 
 import models
 from models.member import Member
-from models.org_base_model import BaseModel
 from models.organization import Organization
 from models.event import Event
-from models.message import Message
-from models.announcement import Announcement
+from models.communication import *
 
+# Org models
 classes = {"Member": Member, "Organization": Organization,
-           "Event": Event, "Message": Message, "Announcement": Announcement}
+           "Event": Event, "Message": Message, "Announcement": Announcement, "Discussion": Discussion}
 
 
 class FileStorage:
