@@ -7,8 +7,7 @@ from models.member import Member
 from models.org_base_model import BaseModel
 from models.organization import Organization
 from models.event import Event
-from models.message import Message
-from models.announcement import Announcement
+from models.communication import *
 
 
 @org_views.route('/status')
@@ -26,7 +25,8 @@ def stats():
     	"organization": Organization,
     	"event": Event,
     	"message": Message,
-    	"announcement": Announcement
+    	"announcement": Announcement,
+        "discussion": Discussion
     	}
 
     for key, value in objects.items():

@@ -3,7 +3,7 @@
 
 from flask import request, jsonify
 
-from models.message import Message
+from models.communication import Message
 from api.views import org_views
 from models import storage
 
@@ -25,7 +25,7 @@ def get_message(message_id):
         return jsonify(message.to_dict())
     return jsonify({'error': 'Message not found'}), 404
 
-@org_views.route('/message', methods=['POST'])
+@org_views.route('/messages', methods=['POST'])
 def create_message():
     """Create a new message object"""
 
