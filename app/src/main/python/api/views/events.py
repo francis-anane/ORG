@@ -47,4 +47,31 @@ def create_event():
 
     return jsonify(event.to_dict()), 201
 
-# Add PUT and DELETE routes for updating and deleting events
+@org_views.route('/events/<event_id>', methods=['PUT'])
+def update_event(event_id):
+    """Update an existing event object"""
+
+    data = request.get_json()  # Content body
+    event = storage.get(Event, event_id)
+
+    if not event:
+        return jsonify({'error': 'Event not found'}), 404
+
+    for key, value in data.items():
+        setattr(event, key, value)
+
+    event.save()
+
+    return jsonify(event.to_dict()), 200
+
+@org_views.route('/events/<event_id>', methods=['DELETE'])
+def delete_event(event_id):
+    """Delete an event object"""
+
+    event = storage.get(Event, event_id)
+    if not event:
+        return jsonify({'error': 'Event not found'}), 404
+
+    event.delete()
+
+    return jsonify({'message': 'Event deleted'}), 200

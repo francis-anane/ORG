@@ -40,3 +40,32 @@ def create_discussion():
     discussion.save()
 
     return jsonify(discussion.to_dict()), 201
+
+@org_views.route('/discussions/<discussion_id>', methods=['PUT'])
+def update_discussion(discussion_id):
+    """Update an existing discussion object"""
+
+    data = request.get_json()  # Content body
+    discussion = storage.get(Discussion, discussion_id)
+
+    if not discussion:
+        return jsonify({'error': 'Discussion not found'}), 404
+
+    for key, value in data.items():
+        setattr(discussion, key, value)
+
+    discussion.save()
+
+    return jsonify(discussion.to_dict()), 200
+
+@org_views.route('/discussions/<discussion_id>', methods=['DELETE'])
+def delete_discussion(discussion_id):
+    """Delete a discussion object"""
+
+    discussion = storage.get(Discussion, discussion_id)
+    if not discussion:
+        return jsonify({'error': 'Discussion not found'}), 404
+
+    discussion.delete()
+
+    return jsonify({'message': 'Discussion deleted'}), 200

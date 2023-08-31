@@ -25,7 +25,7 @@ def get_organization(organization_id):
         return jsonify(organization.to_dict())
     return jsonify({'error': 'Organization not found'}), 404
 
-@org_views.route('/organization', methods=['POST'])
+@org_views.route('/organizations', methods=['POST'])
 def create_organization():
     """Create a new organization object"""
 
@@ -42,6 +42,31 @@ def create_organization():
 
     return jsonify(organization.to_dict()), 201
 
-# Add PUT and DELETE routes for updating and deleting organization
+@org_views.route('/organizations/<organization_id>', methods=['PUT'])
+def update_organization(organization_id):
+    """Update an existing organization object"""
 
+    data = request.get_json()  # Content body
+    organization = storage.get(Organization, organization_id)
 
+    if not organization:
+        return jsonify({'error': 'Organization not found'}), 404
+
+    for key, value in data.items():
+        setattr(organization, key, value)
+
+    organization.save()
+
+    return jsonify(organization.to_dict()), 200
+
+@org_views.route('/organizations/<organization_id>', methods=['DELETE'])
+def delete_organization(organization_id):
+    """Delete an organization object"""
+
+    organization = storage.get(Organization, organization_id)
+    if not organization:
+        return jsonify({'error': 'Organization not found'}), 404
+
+    organization.delete()
+
+    return jsonify({'message': 'Organization deleted'}), 200

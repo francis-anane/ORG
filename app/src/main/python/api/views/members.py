@@ -46,6 +46,31 @@ def create_member():
 
     return jsonify(member.to_dict()), 201
 
-# Add PUT and DELETE routes for updating and deleting members
+@org_views.route('/members/<member_id>', methods=['PUT'])
+def update_member(member_id):
+    """Update an existing member object"""
 
+    data = request.get_json()  # Content body
+    member = storage.get(Member, member_id)
 
+    if not member:
+        return jsonify({'error': 'Member not found'}), 404
+
+    for key, value in data.items():
+        setattr(member, key, value)
+
+    member.save()
+
+    return jsonify(member.to_dict()), 200
+
+@org_views.route('/members/<member_id>', methods=['DELETE'])
+def delete_member(member_id):
+    """Delete a member object"""
+
+    member = storage.get(Member, member_id)
+    if not member:
+        return jsonify({'error': 'Member not found'}), 404
+
+    member.delete()
+
+    return jsonify({'message': 'Member deleted'}), 200

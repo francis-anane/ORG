@@ -1,5 +1,3 @@
 package com.abstratsystems.org
-
-class MemberActivity {
-
+class Event {
 }

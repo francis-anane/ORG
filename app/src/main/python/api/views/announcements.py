@@ -39,3 +39,32 @@ def create_announcement():
     announcement.save()
 
     return jsonify(announcement.to_dict()), 201
+
+@org_views.route('/announcements/<announcement_id>', methods=['PUT'])
+def update_announcement(announcement_id):
+    """Update an existing announcement object"""
+
+    data = request.get_json()  # Content body
+    announcement = storage.get(Announcement, announcement_id)
+
+    if not announcement:
+        return jsonify({'error': 'Announcement not found'}), 404
+
+    for key, value in data.items():
+        setattr(announcement, key, value)
+
+    announcement.save()
+
+    return jsonify(announcement.to_dict()), 200
+
+@org_views.route('/announcements/<announcement_id>', methods=['DELETE'])
+def delete_announcement(announcement_id):
+    """Delete an announcement object"""
+
+    announcement = storage.get(Announcement, announcement_id)
+    if not announcement:
+        return jsonify({'error': 'Announcement not found'}), 404
+
+    announcement.delete()
+
+    return jsonify({'message': 'Announcement deleted'}), 200

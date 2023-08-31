@@ -42,4 +42,31 @@ def create_message():
 
     return jsonify(message.to_dict()), 201
 
-# Add PUT and DELETE routes for updating and deleting message
+@org_views.route('/messages/<message_id>', methods=['PUT'])
+def update_message(message_id):
+    """Update an existing message object"""
+
+    data = request.get_json()  # Content body
+    message = storage.get(Message, message_id)
+
+    if not message:
+        return jsonify({'error': 'Message not found'}), 404
+
+    for key, value in data.items():
+        setattr(message, key, value)
+
+    message.save()
+
+    return jsonify(message.to_dict()), 200
+
+@org_views.route('/messages/<message_id>', methods=['DELETE'])
+def delete_message(message_id):
+    """Delete a message object"""
+
+    message = storage.get(Message, message_id)
+    if not message:
+        return jsonify({'error': 'Message not found'}), 404
+
+    message.delete()
+
+    return jsonify({'message': 'Message deleted'}), 200

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_700">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/txtName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgCustomer"
+            android:layout_width="@dimen/imgViewLayoutSize"
+            android:layout_height="@dimen/imgViewLayoutSize"
+            android:layout_margin="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/txtTown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:text="@string/txtCity"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtContact"
+        app:layout_constraintTop_toBottomOf="@+id/txtContact" />
+
+    <TextView
+        android:id="@+id/txtContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:text="@string/txtPhone"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/txtOtherNames"
+        app:layout_constraintStart_toStartOf="@+id/txtOtherNames"
+        app:layout_constraintTop_toBottomOf="@+id/txtOtherNames" />
+
+    <TextView
+        android:id="@+id/txtAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/txtTown"
+        app:layout_constraintStart_toStartOf="@+id/txtTown"
+        app:layout_constraintTop_toBottomOf="@+id/txtTown" />
+
+    <TextView
+        android:id="@+id/txtOtherNames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:text="@string/txtOtherNames"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/txtName"
+        app:layout_constraintStart_toStartOf="@+id/txtName"
+        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+
+    <TextView
+        android:id="@+id/txtPartner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:text="@string/txtPartnerName"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/txtAddress"
+        app:layout_constraintStart_toStartOf="@+id/txtAddress"
+        app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+
+    <TextView
+        android:id="@+id/txtMother"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:text="@string/txtMotherName"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtFather"
+        app:layout_constraintTop_toBottomOf="@+id/txtFather" />
+
+    <TextView
+        android:id="@+id/txtFather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:text="@string/txtFatherName"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/txtPartner"
+        app:layout_constraintStart_toStartOf="@+id/txtPartner"
+        app:layout_constraintTop_toBottomOf="@+id/txtPartner" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:text="@string/txtName"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="411dp" />
+
+    <EditText
+        android:id="@+id/editTxtPaying"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:hint="Paying"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.659"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMother" />
+
+    <Button
+        android:id="@+id/btnPaying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtPaying"
+        app:layout_constraintStart_toEndOf="@+id/editTxtPaying"
+        app:layout_constraintTop_toTopOf="@+id/editTxtPaying" />
+
+    <TextView
+        android:id="@+id/txtPaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:text="Paid:"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/txtRmBalance"
+        app:layout_constraintStart_toStartOf="@+id/txtRmBalance"
+        app:layout_constraintTop_toBottomOf="@+id/txtRmBalance" />
+
+    <TextView
+        android:id="@+id/txtRmBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:text="Balance:"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/txtSoldPrice"
+        app:layout_constraintStart_toStartOf="@+id/txtSoldPrice"
+        app:layout_constraintTop_toBottomOf="@+id/txtSoldPrice" />
+
+    <TextView
+        android:id="@+id/txtSoldPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txtViewMargin"
+        android:text="Sold Price:"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/editTxtPaying"
+        app:layout_constraintStart_toStartOf="@+id/editTxtPaying"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtPaying" />
+
+    <TextView
+        android:id="@+id/txtComplete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment Completed"
+        android:textColor="@color/yellow"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/txtRmBalance"
+        app:layout_constraintStart_toStartOf="@+id/txtRmBalance"
+        app:layout_constraintTop_toTopOf="@+id/txtPaid" />
+
+    <TextView
+        android:id="@+id/txtItemValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Item Value:"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtPaying"
+        app:layout_constraintEnd_toStartOf="@+id/editTxtPaying"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTxtPaying" />
+</androidx.constraintlayout.widget.ConstraintLayout>
