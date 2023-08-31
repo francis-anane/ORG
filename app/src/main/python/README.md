@@ -16,7 +16,7 @@ Note these steps assumes you have flask and flask_cors installed
 
 * cd ORG/app/src/main/python
 * python3 -m api.org
-Now if all dependencies are installed the api should be running now
+  (If all dependencies are installed the api should be running now)
 
 ## routes
 The api runs on all addresses with the port 8000 having the following endpoints
