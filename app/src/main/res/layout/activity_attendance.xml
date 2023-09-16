@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".AttendanceActivity">
+
+    <EditText
+        android:id="@+id/dateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select Date"
+        android:inputType="none"
+        android:clickable="true"
+        android:focusable="false" />
+
+    <Button
+        android:id="@+id/checkInButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check In" />
+
+    <Button
+        android:id="@+id/checkOutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check Out" />
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "78078289242",
+    "project_id": "org-app-11a9d",
+    "storage_bucket": "org-app-11a9d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78078289242:android:ed93accf5ff717d938ff63",
+        "android_client_info": {
+          "package_name": "com.abstratsystems.org"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78078289242-puud80sa1hoqq0ch9idbefme5lm43hfa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmlSWExsEIYnLvYhqiNbTYuSoBd3oO7Ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78078289242-puud80sa1hoqq0ch9idbefme5lm43hfa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ORG</string>
+    <string name="set_org">Add Organization</string>
 </resources>

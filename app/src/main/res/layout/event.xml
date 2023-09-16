@@ -9,7 +9,7 @@
     app:cardElevation="3dp">
 
     <TextView
-        android:id="@+id/txtTown"
+        android:id="@+id/textViewMessage"
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_margin="8dp"

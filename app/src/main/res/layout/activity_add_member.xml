@@ -4,114 +4,141 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".AddMemberActivity">
 
-    <EditText
-        android:id="@+id/editTextDepartment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Department"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/editTextOrganization"
-        app:layout_constraintStart_toStartOf="@+id/editTextOrganization"
-        app:layout_constraintTop_toBottomOf="@+id/editTextOrganization" />
-
-    <EditText
-        android:id="@+id/editTextState"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="State"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/editTextCountry"
-        app:layout_constraintStart_toStartOf="@+id/editTextCountry"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCountry" />
-
-    <EditText
-        android:id="@+id/editTextOrganization"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Organization"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/editTextCity"
-        app:layout_constraintStart_toStartOf="@+id/editTextCity"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCity" />
-
-    <EditText
-        android:id="@+id/editTextCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="City"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/editTextState"
-        app:layout_constraintStart_toStartOf="@+id/editTextState"
-        app:layout_constraintTop_toBottomOf="@+id/editTextState" />
 
     <EditText
         android:id="@+id/editTextName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="text"
+        android:hint="Enter Name"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextPhone"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="Phone Number"
         android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="@+id/editTextName"
-        app:layout_constraintStart_toStartOf="@+id/editTextName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
     <EditText
-        android:id="@+id/editTextEmailAddress"
-        android:layout_width="wrap_content"
+        android:id="@+id/editTextEmail"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="@+id/editTextPhone"
-        app:layout_constraintStart_toStartOf="@+id/editTextPhone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
     <EditText
-        android:id="@+id/editTextCountry"
-        android:layout_width="wrap_content"
+        android:id="@+id/editTextOrganization"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Country"
+        android:hint="Organization"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/editTextEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/editTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
+
+    <!-- Additional EditText fields for more data (initially hidden) -->
+
+    <CheckBox
+        android:id="@+id/checkBoxMoreData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="More Data Fields"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextOrganization" />
+
+    <EditText
+        android:id="@+id/editTextDepartment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Department"
+        android:inputType="text"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxMoreData" />
 
     <EditText
         android:id="@+id/editTextRole"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Role"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/editTextDepartment"
-        app:layout_constraintStart_toStartOf="@+id/editTextDepartment"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDepartment" />
 
+
+    <EditText
+        android:id="@+id/editTextCountry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Country"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRole" />
+
+    <EditText
+        android:id="@+id/editTextState"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="State"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCountry" />
+
+    <EditText
+        android:id="@+id/editTextCity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="City"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextState" />
+
+
+    <!-- ImageButton to get memberImage (Initially invisible) -->
     <ImageButton
-        android:id="@+id/meberImageBtn"
+        android:id="@+id/imageButtonMember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_menu_camera"
-        app:layout_constraintEnd_toEndOf="@+id/editTextRole"
-        app:layout_constraintStart_toStartOf="@+id/editTextRole"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRole" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCity" />
+
+    <Button
+        android:id="@+id/buttonSaveMember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

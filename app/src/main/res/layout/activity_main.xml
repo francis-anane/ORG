@@ -4,82 +4,138 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:addStatesFromChildren="false">
+    tools:context=".MainActivity">
 
-    <!-- AppBar Control -->
+    <!-- Top Appbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/Theme.AppCompat.Light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/appBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/btnBottomBarMargin"
-        android:text="ORG"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/teal_200"
+            app:popupTheme="@style/Theme.AppCompat.Light">
+
+            <Button
+                android:id="@+id/buttonAddOrganization"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_org"
+                android:textAllCaps="false"
+                android:textColor="@color/dark" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <!--app:title="Org" -->
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Placeholder for your content -->
+
+    <!-- Bottom Appbar -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="0dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintVertical_bias="0.9">
 
-        <Button
-            android:id="@+id/messagesBtn"
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:theme="@style/Theme.AppCompat.Light"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- ImageButtons -->
+
+                <!-- Add Item4 -->
+
+                <ImageButton
+                    android:id="@+id/imageButtonMembers"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:contentDescription="Item 1"
+                    android:padding="8dp"
+                    android:src="@mipmap/members"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonMessage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="72dp"
+                    android:contentDescription="Item 2"
+                    android:padding="8dp"
+                    android:src="@mipmap/inbox"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageButtonMembers"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonAnnouncement"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="64dp"
+                    android:contentDescription="Item 3"
+                    android:padding="8dp"
+                    android:src="@mipmap/announce"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageButtonMessage"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonEvent"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="Item 4"
+                    android:padding="8dp"
+                    android:src="@mipmap/event"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.906"
+                    app:layout_constraintStart_toEndOf="@+id/imageButtonAnnouncement"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/FabAddMember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/btnBottomBarMargin"
-            android:text="Messages"
-            android:textSize="@dimen/buttonTextSize"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="680dp" />
+            android:layout_gravity="right|bottom"
+            android:contentDescription="Fab"
+            android:layout_marginBottom="100dp"
+            android:src="@mipmap/add_member" />
 
-        <Button
-            android:id="@+id/eventsBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/btnBottomBarMargin"
-            android:text="Events"
-            android:textSize="@dimen/buttonTextSize"
-            tools:layout_editor_absoluteX="88dp"
-            tools:layout_editor_absoluteY="3dp" />
-
-        <Button
-            android:id="@+id/DiscussionsBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/btnBottomBarMargin"
-            android:text="Discussions"
-            android:textSize="@dimen/buttonTextSize"
-            tools:layout_editor_absoluteX="176dp"
-            tools:layout_editor_absoluteY="44dp" />
-
-        <Button
-            android:id="@+id/announcementsBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/btnBottomBarMargin"
-            android:text="Announcements"
-            android:textSize="@dimen/buttonTextSize"
-            tools:layout_editor_absoluteX="264dp"
-            tools:layout_editor_absoluteY="44dp" />
-
-    </androidx.appcompat.widget.Toolbar>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/checkin_checkout_parent"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"/>
 
 
-    <Button
-        android:id="@+id/addMemberBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Member"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/checkinBtn"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="201dp"
-        android:text="Checkin"
-        android:textAllCaps="false"
-        android:textSize="@dimen/buttonTextSize"
-        app:layout_constraintBottom_toTopOf="@+id/appBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <!-- FloatingActionButton -->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,104 +1,107 @@
 package com.abstratsystems.org
 
 import android.content.Intent
-import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.biometric.BiometricPrompt
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.content.ContextCompat
-import com.abstratsystems.org.ui.theme.ORGTheme
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
-import java.util.concurrent.Executor
+import android.widget.ImageButton
+import com.abstratsystems.org.utils.DataInit
+import com.abstratsystems.org.utils.MyInstances
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.launch
 
+/**
+ * Main menu Activity for the organization.
+ */
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var bottomAppBar: BottomAppBar
+    private lateinit var fabAddMember: FloatingActionButton
+    private lateinit var addOrganizationButton: Button
+    private lateinit var imageButtonMembers: ImageButton
+    private lateinit var imageButtonMessage: ImageButton
+    private lateinit var imageButtonAnnouncement: ImageButton
+    private lateinit var imageButtonEvent: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
 
-        // Main activity button views
-        val checkinBtn : Button = findViewById(R.id.checkinBtn)
-        //val organizationBtn : Button = findViewById(R.id.organizationBtn)
-        //val addMemberBtn : Button = findViewById(R.id.addMemberBtn)
+        // Code inside this call is executed in a background thread
+        MyInstances.coroutineScope.launch{
+            // Initialize Organization
+            DataInit.initOrganization()
+            //Initialize members data
+            DataInit.initMembers()
+            // Initialize Messages
+            DataInit.initMessages()
 
-        // Executor instance to pass to the defined createBiometricPrompt method
-        val executor = ContextCompat.getMainExecutor(this)
-        // Get biometric prompt instance
-        val biometricPrompt = createBiometricPrompt(this, executor)
-        val promptInfo = createPromptInfo()
-
-        // Set onclick listener for addMemberBtn
-//        addMemberBtn.setOnClickListener {
-//            // create add member intent
-//            val intent = Intent(this@MainActivity, AddMemberActivity::class.java)
-//            intent.action = Intent.ACTION_VIEW
-//            startActivity(intent)
-//
-//        }
-        // Set onclick listener for checkinBtn
-        checkinBtn.setOnClickListener {
-            // Display biometric prompt dialog
-            biometricPrompt.authenticate(promptInfo)
         }
 
+        initViews()
+
+        // Event to add a new organization on button click
+        addOrganizationButton.setOnClickListener{
+            val intent = Intent(this@MainActivity, SetUpOrganizationActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Event to add a new member on button click
+        fabAddMember.setOnClickListener {
+            // Create an intent to add a new user
+            val intent = Intent(this@MainActivity, AddMemberActivity::class.java)
+            startActivity(intent)
+        }
+
+        imageButtonMembers.setOnClickListener {
+            // Create an intent to see members
+            val intent = Intent(this@MainActivity, MembersActivity::class.java)
+            startActivity(intent)
+        }
+
+        imageButtonMessage.setOnClickListener {
+            // Create an intent to send and read messages
+            val intent = Intent(this@MainActivity, MessageActivity::class.java)
+            startActivity(intent)
+        }
+
+        imageButtonAnnouncement.setOnClickListener {
+            val intent = Intent(this@MainActivity, AnnouncementActivity::class.java)
+            startActivity(intent)
+        }
+
+        imageButtonEvent.setOnClickListener {
+            val intent = Intent(this@MainActivity, EventActivity::class.java)
+            startActivity(intent)
+        }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
 
-// Add biometric authentication
-private fun createBiometricPrompt(
-    activity: AppCompatActivity,
-    executor: Executor
-): BiometricPrompt {
-    return BiometricPrompt(activity, executor,
-        object : BiometricPrompt.AuthenticationCallback() {
-            override fun onAuthenticationSucceeded(
-                result: BiometricPrompt.AuthenticationResult
-            ) {
-                // Fingerprint authentication successful
-                super.onAuthenticationSucceeded(result)
-                Toast.makeText(applicationContext,
-                    "Authentication succeeded!", Toast.LENGTH_SHORT)
-                    .show()
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_settings -> {
+                // Handle settings menu item click
+                return true
             }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
 
-            override fun onAuthenticationFailed() {
-                // Fingerprint authentication failed
-                super.onAuthenticationFailed()
-                Toast.makeText(applicationContext, "Authentication failed",
-                    Toast.LENGTH_SHORT)
-                    .show()
-            }
-
-            override fun onAuthenticationError(
-                errorCode: Int,
-                errString: CharSequence
-            ) {
-                // Handle authentication errors
-                super.onAuthenticationError(errorCode, errString)
-                Toast.makeText(applicationContext,
-                    "Authentication error: $errString", Toast.LENGTH_SHORT)
-                    .show()
-            }
-        })
-}
-
-// Biometric authentication prompt info
-private fun createPromptInfo(): BiometricPrompt.PromptInfo {
-    return BiometricPrompt.PromptInfo.Builder()
-        .setTitle("Fingerprint Authentication")
-        .setSubtitle("Place your finger on the fingerprint sensor")
-        .setNegativeButtonText("Cancel")
-        .build()
-}
-
+    // Initialize all views
+    private fun initViews() {
+        bottomAppBar = findViewById(R.id.bottomAppBar)
+        fabAddMember = findViewById(R.id.FabAddMember)
+        addOrganizationButton = findViewById(R.id.buttonAddOrganization)
+        imageButtonMembers = findViewById(R.id.imageButtonMembers)
+        imageButtonMessage = findViewById(R.id.imageButtonMessage)
+        imageButtonAnnouncement = findViewById(R.id.imageButtonAnnouncement)
+        imageButtonEvent = findViewById(R.id.imageButtonEvent)
+    }
 }

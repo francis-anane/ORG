@@ -2,7 +2,7 @@
 <resources>
     <dimen name="txtViewMargin">10dp</dimen>
     <dimen name="imgViewLayoutSize">100dp</dimen>
-    <dimen name="btnMargin">10dp</dimen>
+    <dimen name="mainBtnWidth">20dp</dimen>
     <dimen name="layoutMargin">10dp</dimen>
 
 
