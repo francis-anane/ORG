@@ -15,67 +15,67 @@ import retrofit2.http.*
 interface OrgApiService {
     // Member routes
 
-    @GET("/org/members")
+    @GET("/members")
     fun getAllMembers(): Call<ArrayList<Member>>
 
-    @GET("/org/members/{member_id}")
+    @GET("/members/{member_id}")
     fun getMember(@Path("member_id") memberId: String): Call<Member>
 
-    @POST("/org/members")
+    @POST("/members")
     fun createMember(@Body member: Member): Call<Member>
 
-    @PUT("/org/members/{member_id}")
+    @PUT("/members/{member_id}")
     fun updateMember(@Path("member_id") memberId: String, @Body member: Member): Call<Member>
 
-    @DELETE("/org/members/{member_id}")
+    @DELETE("/members/{member_id}")
     fun deleteMember(@Path("member_id") memberId: String): Call<Void>
 
     // Event routes
 
-    @GET("/org/events")
+    @GET("/events")
     fun getAllEvents(): Call<ArrayList<Event>>
 
-    @GET("/org/events/{event_id}")
+    @GET("/events/{event_id}")
     fun getEvent(@Path("event_id") eventId: String): Call<Event>
 
-    @POST("/org/events")
+    @POST("/events")
     fun createEvent(@Body event: Event): Call<Event>
 
-    @PUT("/org/events/{event_id}")
+    @PUT("/events/{event_id}")
     fun updateEvent(@Path("event_id") eventId: String, @Body event: Event): Call<Event>
 
-    @DELETE("/org/events/{event_id}")
+    @DELETE("/events/{event_id}")
     fun deleteEvent(@Path("event_id") eventId: String): Call<Void>
 
     // Organization routes
 
-    @GET("/org/organizations")
+    @GET("/organizations")
     fun getAllOrganizations(): Call<ArrayList<Organization>>
 
-    @GET("/org/organizations/{organization_id}")
+    @GET("/organizations/{organization_id}")
     fun getOrganization(@Path("organization_id") organizationId: String): Call<Organization>
 
-    @POST("/org/organizations")
+    @POST("/organizations")
     fun createOrganization(@Body organization: Organization): Call<Organization>
 
-    @PUT("/org/organizations/{organization_id}")
+    @PUT("/organizations/{organization_id}")
     fun updateOrganization(
         @Path("organization_id") organizationId: String,
         @Body organization: Organization
     ): Call<Organization>
 
-    @DELETE("/org/organizations/{organization_id}")
+    @DELETE("/organizations/{organization_id}")
     fun deleteOrganization(@Path("organization_id") organizationId: String): Call<Void>
 
     // Announcement routes
 
-    @GET("/org/announcements")
+    @GET("/announcements")
     fun getAllAnnouncements(): Call<ArrayList<Announcement>>
 
-    @GET("/org/announcements/{announcement_id}")
+    @GET("/announcements/{announcement_id}")
     fun getAnnouncement(@Path("announcement_id") announcementId: String): Call<Announcement>
 
-    @POST("/org/announcements")
+    @POST("/announcements")
     fun createAnnouncement(@Body announcement: Announcement): Call<Announcement>
 
     @PUT("/org/announcements/{announcement_id}")
@@ -126,13 +126,13 @@ interface OrgApiService {
 
     // Attendance routes
 
-    @GET("/org/attendance")
+    @GET("/org/attendances")
     fun getAllAttendance(): Call<ArrayList<Attendance>>
 
     @GET("/org/attendance/{attendance_id}")
     fun getAttendance(@Path("attendance_id") attendanceId: String): Call<Attendance>
 
-    @POST("/org/attendance")
+    @POST("/org/attendances")
     fun createAttendance(@Body attendance: Attendance): Call<Attendance>
 
     @PUT("/org/attendance/{attendance_id}")

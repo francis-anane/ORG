@@ -6,41 +6,36 @@ import java.io.File
 import java.io.FileReader
 import java.io.FileWriter
 import android.os.Environment
+import android.content.Context
+import android.util.Log
 
 object FileIO {
-
-
     // Function to read text from a file
-    fun readFromFile(filePath: String): String {
-        val file = File(filePath)
-        val stringBuilder = StringBuilder()
+    fun readId(idPath: String): String {
 
+        var id: String = ""
+        Log.i("The id source is:", idPath)
         try {
-            val reader = BufferedReader(FileReader(file))
-            var line: String?
-
-            // Read line by line and append to the StringBuilder
-            while (reader.readLine().also { line = it } != null) {
-                stringBuilder.append(line).append('\n')
-            }
-
+            val reader = BufferedReader(FileReader(File(idPath)))
+            // Read the id file
+            id = reader.readLine()
             reader.close()
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
-        return stringBuilder.toString()
+        Log.i("The id read is: ", id)
+        return id
     }
 
     // Function to write text to a file
-    fun writeToFile(filePath: String, content: String) {
-        val file = File(filePath)
-
+    fun writeId(idPath: String, id: String) {
         try {
-            val writer = BufferedWriter(FileWriter(file))
+            val writer = BufferedWriter(FileWriter(File(idPath)))
 
-            // Write the content to the file
-            writer.write(content)
+            // Write the id to the file
+            Log.i("Before writing id:", id)
+            Log.i("The writing des:", idPath)
+            writer.write(id)
 
             writer.close()
         } catch (e: Exception) {
@@ -50,36 +45,9 @@ object FileIO {
 
 
 
-
-    fun publicDocumentsPath(): String {
-        return if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+    fun appStoragePath(context: Context): String {
             // Get the documents directory
-            val documentsDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
-            documentsDirectory.absolutePath
-            // Now, documentsPath contains the path to the documents directory
-        } else {
-            // External storage is not available or not writable
-            println("External storage is not available or not writable.")
-            ""
-        }
-    }
-
-    fun publicPicturesPath(): String {
-        return if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
-            // Get the documents directory
-            val picturesDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-            picturesDirectory.absolutePath
-            // Now, documentsPath contains the path to the documents directory
-        } else {
-            // External storage is not available or not writable
-            println("External storage is not available or not writable.")
-            ""
-        }
-    }
-
-    fun appStoragePath(): String {
-            // Get the documents directory
-            val filesDirectory = Environment.getExternalStorageDirectory()
+            val filesDirectory = context.filesDir
             return filesDirectory.absolutePath
     }
 

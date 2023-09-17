@@ -2,6 +2,7 @@ package com.abstratsystems.org.models
 
 import com.google.gson.annotations.SerializedName
 import okhttp3.MultipartBody
+import java.util.UUID
 
 /**
  * Data class representing an Organization in the ORG Android app.

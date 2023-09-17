@@ -115,9 +115,9 @@ class AddMemberActivity : AppCompatActivity() {
                 Organization.members.add(member.id)
                 // Update the organization members list remotely
                 UpdateObJect.organization(Organization.id, Organization)
-                while (!UpdateObJect.isSuccessful){
-                    UpdateObJect.organization(Organization.id, Organization)
-                }
+//                while (!UpdateObJect.isSuccessful){
+//                    UpdateObJect.organization(Organization.id, Organization)
+//                }
 
             }
             emptyEditTextFields()

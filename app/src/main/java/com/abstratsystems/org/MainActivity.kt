@@ -31,9 +31,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Code inside this call is executed in a background thread
+
         MyInstances.coroutineScope.launch{
             // Initialize Organization
-            DataInit.initOrganization()
+            DataInit.initOrganization(applicationContext)
             //Initialize members data
             DataInit.initMembers()
             // Initialize Messages
