@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abstratsystems.org.models.Message
 import com.abstratsystems.org.utils.CreateObJect
 import com.abstratsystems.org.utils.DataInit
+import com.abstratsystems.org.utils.SetColor
 import com.google.gson.Gson
 import okhttp3.*
 import org.json.JSONException
@@ -28,9 +29,12 @@ class MessageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_message)
 
+        SetColor.actionBar(this, "#2a6099")
+
         // Initialize UI elements
         messageEditText = findViewById(R.id.messageEditText)
         sendButton = findViewById(R.id.sendButton)
+        SetColor.viewsBackgroundTint(listOf(sendButton), "#2a6099")
         recyclerView = findViewById(R.id.messageRecyclerView)
 
 

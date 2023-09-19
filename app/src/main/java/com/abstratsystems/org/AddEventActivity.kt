@@ -1,12 +1,16 @@
 package com.abstratsystems.org
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.DatePicker
 import android.widget.EditText
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.abstratsystems.org.utils.SetColor
 
 class AddEventActivity : AppCompatActivity() {
     private lateinit var titleEditText: EditText
@@ -15,6 +19,10 @@ class AddEventActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_event)
+
+        SetColor.actionBar(this, "#2a6099")
+
+
 
         // Initialize UI components
         titleEditText = findViewById(R.id.titleEditText)

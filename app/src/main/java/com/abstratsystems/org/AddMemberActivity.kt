@@ -3,6 +3,8 @@ import Member
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -12,6 +14,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageButton
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -19,6 +22,8 @@ import androidx.core.content.FileProvider
 import com.abstratsystems.org.models.Organization
 import com.abstratsystems.org.utils.CreateObJect
 import com.abstratsystems.org.utils.DataInit
+import com.abstratsystems.org.utils.Instances
+import com.abstratsystems.org.utils.SetColor
 import com.abstratsystems.org.utils.UpdateObJect
 import com.google.gson.Gson
 import org.json.JSONObject
@@ -59,6 +64,8 @@ class AddMemberActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_member) // Replace with your layout file
 
+        SetColor.actionBar(this, "#2a6099")
+
         // Initialize views
         initViews()
 
@@ -98,8 +105,6 @@ class AddMemberActivity : AppCompatActivity() {
             // Covert the json data to string for serializing into to Member instance
             val jsonString = setMemberData().toString()
             val gson = Gson()
-            println("Data String: $jsonString")
-
             val member: Member = gson.fromJson(jsonString, Member::class.java)
 //            // Load the image file
 //            val imageFile = File(currentPhotoPath)
@@ -109,17 +114,8 @@ class AddMemberActivity : AppCompatActivity() {
 //
             // save data with api call
             CreateObJect.member(member)
-            if(CreateObJect.isSuccessful) {
-                // Add member object to current local data
-                DataInit.allMembers.add(member)
-                Organization.members.add(member.id)
-                // Update the organization members list remotely
-                UpdateObJect.organization(Organization.id, Organization)
-//                while (!UpdateObJect.isSuccessful){
-//                    UpdateObJect.organization(Organization.id, Organization)
-//                }
-
-            }
+            // Add member object to local list
+            DataInit.allMembers.add(member)
             emptyEditTextFields()
 
         }
@@ -153,6 +149,8 @@ class AddMemberActivity : AppCompatActivity() {
 
         saveMemberButton = findViewById(R.id.buttonSaveMember)
 
+        SetColor.viewsBackgroundTint(listOf(saveMemberButton), "#2a6099")
+
     }
 
     /**
@@ -172,9 +170,9 @@ class AddMemberActivity : AppCompatActivity() {
         jsonData.put("organization", organizationEditText.text.toString())
         jsonData.put("department", departmentEditText.text.toString())
         jsonData.put("role", roleEditText.text.toString())
-        jsonData.put("created_at", LocalDateTime.now().toString())
-        jsonData.put("updated_at", LocalDateTime.now().toString())
-        jsonData.put("organization_id", Organization.id)
+        jsonData.put("created_at", null)
+        jsonData.put("updated_at", null)
+        jsonData.put("organization_id", Instances.organization.id)
         //jsonData.put("image", image)
         return jsonData
     }

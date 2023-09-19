@@ -18,9 +18,6 @@ class Organization(BaseModel, Base):
         country = Column(String(256))
         state = Column(String(256))
         city = Column(String(256))
-        
-        # Define relationship with members
-        members = relationship('Member', back_populates='organization')
     else:
         name = ""
         head = ""
@@ -31,7 +28,6 @@ class Organization(BaseModel, Base):
         country = ""
         state = ""
         city = ""
-        members = []
 
     def __init__(self, *args, **kwargs):
         """ Class constructor """

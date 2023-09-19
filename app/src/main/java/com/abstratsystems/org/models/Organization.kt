@@ -2,6 +2,7 @@ package com.abstratsystems.org.models
 
 import com.google.gson.annotations.SerializedName
 import okhttp3.MultipartBody
+import java.time.LocalDateTime
 import java.util.UUID
 
 /**
@@ -10,7 +11,6 @@ import java.util.UUID
  * @property id Unique identifier for the organization.
  * @property name of the organization.
  * @property head Name of the head of the organization
- * @property members List of member IDs associated with the organization.
  * @property phone Organization's phone number.
  * @property email Organization's email address.
  * @property website Organization's website URL.
@@ -21,18 +21,17 @@ import java.util.UUID
  * @property createdAt Timestamp indicating when the organization was created.
  * @property updatedAt Timestamp indicating the last update to the organization's information.
  */
-object Organization {
-    @SerializedName("id") lateinit var id: String
-    lateinit var name: String
-    lateinit var head: String
-    lateinit var members: ArrayList<String>
-    lateinit var phone: String
-    lateinit var email: String
-    lateinit var website: String
-    lateinit var country: String
-    lateinit var state: String
-    lateinit var city: String
-    var logo: MultipartBody.Part? = null // This field will hold the image data,
-    @SerializedName("created_at") lateinit var createdAt: String
-    @SerializedName("updated_at") lateinit var updatedAt: String
-}
+data class Organization (
+    @SerializedName("id") var id: String? = null,
+    var name: String = "ORG",
+    var head: String = "ORG",
+    var phone: String = "",
+    var email: String = "",
+    var website: String = "",
+    var country: String = "",
+    var state: String = "",
+    var city: String = "",
+    var logo: MultipartBody.Part? = null, // This field will hold the image data,
+    @SerializedName("created_at") var createdAt: String? = null,
+    @SerializedName("updated_at") var updatedAt: String? = null
+)

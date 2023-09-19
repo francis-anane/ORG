@@ -7,90 +7,44 @@ import com.abstratsystems.org.models.Organization
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.time.LocalDateTime
-import java.util.UUID
 import android.content.Context
-
+import java.util.UUID
 
 object DataInit {
     var allMembers = ArrayList<Member>()
     var allMessages = ArrayList<Message>()
-    // Place holder for all model objects
-    lateinit var modelObject: Any
 
     fun initOrganization(context: Context){
-        val id = FileIO.readId(FileIO.appStoragePath(context) + "/id.txt")
-        Log.i("The id is:", id)
+        val id = FileIO.readId(FileIO.appStoragePath(context) + "/id.txt").trim()
+        Log.i("The Read id is:", id)
         if(id == ""){
-            // Initialize a new Organization instance id
-            Organization.id = UUID.randomUUID().toString()
-            Log.i("New id is:", Organization.id)
+            Instances.organization.id = UUID.randomUUID().toString()
+            // Write the Object id to a file
+            FileIO.writeId(FileIO.appStoragePath(context) + "/id.txt", Instances.organization.id!!)
+            // Save object to remotes storage
+            CreateObJect.organization(Instances.organization)
 
-            Organization.name = "Org"
-            Organization.head = "Org"
-            Organization.email = "Org"
-            Organization.phone = "Org"
-            Organization.website = "Org"
-            Organization.country = "Org"
-            Organization.state = "Org"
-            Organization.city = "org"
-            Organization.createdAt = LocalDateTime.now().toString()
-            Organization.updatedAt = LocalDateTime.now().toString()
-            Organization.members = ArrayList()
-            CreateObJect.organization(Organization)
-            if(CreateObJect.isSuccessful){
-                // Write the Object id to a file
-                FileIO.writeId(FileIO.appStoragePath(context) + "/id.txt", Organization.id)
-            }
         } else{
-            // Initialize organization data with data from remote if the id exists
-            MyInstances.orgApiService.getOrganization(id)
+            // Initialize organization data with data from remote if the id file is not empty
+            Instances.orgApiService.getOrganization(id)
                 .enqueue(object : Callback<Organization> {
                     override fun onResponse(
                         call: Call<Organization>,
                         response: Response<Organization>
                     ) {
                         if (response.isSuccessful) {
-
-                            val org = response.body()
-                            if(org != null){
-                                Organization.id = org.id
-                                Organization.name = org.name
-                                Organization.head = org.head
-                                Organization.phone = org.phone
-                                Organization.email = org.email
-                                Organization.country = org.country
-                                Organization.state = org.state
-                                Organization.city = org.city
-                                Organization.website = org.website
-                                Organization.members = org.members
-                                Organization.createdAt = org.createdAt
-                                Organization.updatedAt = org.updatedAt
-                                Organization.logo = org.logo
+                            val organization = response.body()
+                            if(organization != null){
+                                Instances.organization = organization
                             } else{
-                                Organization.id = id
-                                Organization.name = "Org"
-                                Organization.head = "Org"
-                                Organization.email = "Org"
-                                Organization.phone = "Org"
-                                Organization.website = "Org"
-                                Organization.country = "Org"
-                                Organization.state = "Org"
-                                Organization.city = "org"
-                                Organization.createdAt = LocalDateTime.now().toString()
-                                Organization.updatedAt = LocalDateTime.now().toString()
-                                Organization.members = ArrayList()
-                                CreateObJect.organization(Organization)
+                                Instances.organization.id = id
                             }
-
-
                         } else {
-                            println("Failed Response: $response")
+                            Log.i("Failed Response:", response.toString())
                         }
                     }
-
                     override fun onFailure(call: Call<Organization>, t: Throwable) {
-                        println("Connection Failed:")
+                        Log.i("Connection Failed:", t.toString())
                     }
 
                 })
@@ -101,7 +55,7 @@ object DataInit {
     }
 
     fun initMembers(){
-        MyInstances.orgApiService.getAllMembers()
+        Instances.orgApiService.getAllMembers()
             .enqueue(object : Callback<ArrayList<Member>> {
                 override fun onResponse(
                     call: Call<ArrayList<Member>>,
@@ -112,18 +66,18 @@ object DataInit {
                         allMembers = response.body()!!
 
                     } else {
-                        println("Failed: $response")
+                        Log.i("Failed to get members:", response.toString())
                     }
                 }
 
                 override fun onFailure(call: Call<ArrayList<Member>>, t: Throwable) {
-                    println("Connection Failed:")
+                    Log.i("Connection Failed", t.toString())
                 }
 
             })
     }
     fun initMessages(){
-        MyInstances.orgApiService.getAllMessages()
+        Instances.orgApiService.getAllMessages()
             .enqueue(object : Callback<ArrayList<Message>> {
                 override fun onResponse(
                     call: Call<ArrayList<Message>>,

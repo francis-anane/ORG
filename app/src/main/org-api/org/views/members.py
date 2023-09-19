@@ -17,6 +17,16 @@ def get_members():
     # Get a list of member objects dictionary
     member_objs = [v.to_dict() for v in storage.all(Member).values()]
     return jsonify(member_objs)
+@org_views.route('/organization_members/<organization_id>', methods=['GET'])
+def get_organization_members(organization_id):
+    """Return a JSON response of all members belonging to and organization
+        specified by id
+    """
+
+    # Get a list of member objects dictionary
+    member_objs = [v.to_dict() for v in storage.all(Member).values()
+                   if v.organization_id == organization_id]
+    return jsonify(member_objs)
 
 @org_views.route('/members/<member_id>', methods=['GET'])
 def get_member(member_id):

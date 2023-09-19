@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abstratsystems.org.utils.DataInit
+import com.abstratsystems.org.utils.SetColor
 import com.bumptech.glide.Glide
 
 /**
@@ -26,6 +27,7 @@ class MembersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_members)
+        SetColor.actionBar(this, "#2a6099")
 
         recyclerView = findViewById(R.id.membersRecyclerView)
         layoutManager = LinearLayoutManager(this)

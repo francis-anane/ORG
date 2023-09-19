@@ -1,14 +1,15 @@
 package com.abstratsystems.org
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.abstratsystems.org.utils.DataInit
-import com.abstratsystems.org.utils.MyInstances
+import com.abstratsystems.org.utils.Instances
+import com.abstratsystems.org.utils.SetColor
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
@@ -20,19 +21,22 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomAppBar: BottomAppBar
     private lateinit var fabAddMember: FloatingActionButton
-    private lateinit var addOrganizationButton: Button
-    private lateinit var imageButtonMembers: ImageButton
-    private lateinit var imageButtonMessage: ImageButton
-    private lateinit var imageButtonAnnouncement: ImageButton
-    private lateinit var imageButtonEvent: ImageButton
+    private lateinit var setOrganizationImageView: ImageView
+    private lateinit var imageButtonMembers: ImageView
+    private lateinit var imageButtonMessage: ImageView
+    private lateinit var imageButtonAnnouncement: ImageView
+    private lateinit var imageButtonEvent: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        SetColor.actionBar(this, "#2a6099")
+
+
         // Code inside this call is executed in a background thread
 
-        MyInstances.coroutineScope.launch{
+        Instances.coroutineScope.launch{
             // Initialize Organization
             DataInit.initOrganization(applicationContext)
             //Initialize members data
@@ -45,8 +49,8 @@ class MainActivity : AppCompatActivity() {
         initViews()
 
         // Event to add a new organization on button click
-        addOrganizationButton.setOnClickListener{
-            val intent = Intent(this@MainActivity, SetUpOrganizationActivity::class.java)
+        setOrganizationImageView.setOnClickListener{
+            val intent = Intent(this@MainActivity, SetOrganizationActivity::class.java)
             startActivity(intent)
         }
 
@@ -99,10 +103,14 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
         bottomAppBar = findViewById(R.id.bottomAppBar)
         fabAddMember = findViewById(R.id.FabAddMember)
-        addOrganizationButton = findViewById(R.id.buttonAddOrganization)
+        setOrganizationImageView = findViewById(R.id.buttonAddOrganization)
         imageButtonMembers = findViewById(R.id.imageButtonMembers)
         imageButtonMessage = findViewById(R.id.imageButtonMessage)
         imageButtonAnnouncement = findViewById(R.id.imageButtonAnnouncement)
         imageButtonEvent = findViewById(R.id.imageButtonEvent)
+
+        SetColor.actionBar(this, "#2a6099")
+        SetColor.viewsBackgroundTint(listOf(fabAddMember), "#2a6099")
+
     }
 }

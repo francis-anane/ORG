@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.abstratsystems.org.utils.DataInit
+import com.abstratsystems.org.utils.Instances
 import com.google.android.material.card.MaterialCardView
 
 /**
@@ -39,9 +39,9 @@ class MyRecyclerViewAdapter<T>(
             itemParent.setOnClickListener {
                 // Set modelObject to the current selected view in the recyclerview
                 // representing the object model
-                DataInit.modelObject = listData[position]!!
+                Instances.modelObject = listData[position]!!
 
-                if(DataInit.modelObject is Member) {
+                if(Instances.modelObject is Member) {
                     // Start an Activity to view Members profile
                     context.startActivity(Intent(context, MemberActivity::class.java))
                 }

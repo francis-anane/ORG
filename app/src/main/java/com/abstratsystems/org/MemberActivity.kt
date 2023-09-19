@@ -7,17 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.abstratsystems.org.utils.DataInit
-import com.abstratsystems.org.utils.MyInstances
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.json.JSONObject
+import com.abstratsystems.org.utils.Instances
+import com.abstratsystems.org.utils.SetColor
 
 
 class MemberActivity: AppCompatActivity() {
@@ -38,6 +29,7 @@ class MemberActivity: AppCompatActivity() {
         setContentView(R.layout.activity_member)
         // initialize the views
         initViews()
+        SetColor.actionBar(this, "#2a6099")
         setProfileData()
 
 
@@ -65,8 +57,8 @@ class MemberActivity: AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     fun setProfileData(){
-        if (DataInit.modelObject is Member){
-            val member = DataInit.modelObject as Member
+        if (Instances.modelObject is Member){
+            val member = Instances.modelObject as Member
             nameTextView.text = "Name: ${member.name}"
             phoneTextView.text = "Phone: ${member.phone}"
             emailTextView.text = "Email: ${member.email}"

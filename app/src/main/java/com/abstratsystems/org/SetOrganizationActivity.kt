@@ -1,6 +1,5 @@
 package com.abstratsystems.org
 
-import com.abstratsystems.org.models.Organization
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,13 +7,12 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import com.abstratsystems.org.utils.CreateObJect
+import com.abstratsystems.org.utils.Instances
+import com.abstratsystems.org.utils.SetColor
 import com.abstratsystems.org.utils.UpdateObJect
-import com.google.gson.Gson
-import org.json.JSONObject
 
 
-class SetUpOrganizationActivity : AppCompatActivity() {
+class SetOrganizationActivity : AppCompatActivity() {
 
     private lateinit var nameEditText: EditText
     private lateinit var headEditText: EditText
@@ -33,6 +31,7 @@ class SetUpOrganizationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_organization)  // Layout file
+        SetColor.actionBar(this, "#2a6099")
 
         // Initialize views
         initViews()
@@ -55,7 +54,7 @@ class SetUpOrganizationActivity : AppCompatActivity() {
             }
         }
         saveOrganizationButton.setOnClickListener{
-            UpdateObJect.organization(Organization.id, Organization)
+            UpdateObJect.organization(Instances.organization.id!!, Instances.organization)
             emptyEditTextFields()
         }
     }
@@ -81,6 +80,7 @@ class SetUpOrganizationActivity : AppCompatActivity() {
         logoImageButton = findViewById(R.id.imageButtonLogo)
 
         saveOrganizationButton = findViewById(R.id.buttonSaveOrganization)
+        SetColor.viewsBackgroundTint(listOf(saveOrganizationButton), "#2a6099")
 
     }
 
@@ -90,14 +90,14 @@ class SetUpOrganizationActivity : AppCompatActivity() {
      * @return JSON object containing member data.
      */
     private fun setOrganizationData(){
-        Organization.name = nameEditText.text.toString()
-        Organization.head = headEditText.text.toString()
-        Organization.phone = phoneEditText.text.toString()
-        Organization.email = emailEditText.text.toString()
-        Organization.website = websiteEditText.text.toString()
-        Organization.country = headquarterCountryEditText.text.toString()
-        Organization.state = headquarterStateEditText.text.toString()
-        Organization.city = headquarterCityEditText.text.toString()
+        Instances.organization.name = nameEditText.text.toString()
+        Instances.organization.head = headEditText.text.toString()
+        Instances.organization.phone = phoneEditText.text.toString()
+        Instances.organization.email = emailEditText.text.toString()
+        Instances.organization.website = websiteEditText.text.toString()
+        Instances.organization.country = headquarterCountryEditText.text.toString()
+        Instances.organization.state = headquarterStateEditText.text.toString()
+        Instances.organization.city = headquarterCityEditText.text.toString()
         //jsonData.put("logo", currentLogoPath)
     }
 

@@ -13,7 +13,7 @@ object UpdateObJect{
     var isSuccessful = false
     fun member(id: String, member: Member,){
         // Make api call to save member data with retrofit request
-        MyInstances.orgApiService.updateMember(id, member).enqueue(object: Callback<Member> {
+        Instances.orgApiService.updateMember(id, member).enqueue(object: Callback<Member> {
             override fun onResponse(call: Call<Member>, response: Response<Member>) {
                 if (response.isSuccessful) {
                     // Handle the successful response here
@@ -48,7 +48,7 @@ object UpdateObJect{
 
     fun organization(id: String, organization: Organization){
         // Make api call to save organization data with retrofit request
-        MyInstances.orgApiService.updateOrganization(id, organization).enqueue(object: Callback<Organization> {
+        Instances.orgApiService.updateOrganization(id, organization).enqueue(object: Callback<Organization> {
             override fun onResponse(call: Call<Organization>, response: Response<Organization>) {
                 if (response.isSuccessful) {
                     // Handle the successful response here
@@ -83,7 +83,7 @@ object UpdateObJect{
 
     fun message(id: String, message: Message){
         // Make api call to save member data with retrofit request
-        MyInstances.orgApiService.updateMessage(id, message).enqueue(object: Callback<Message> {
+        Instances.orgApiService.updateMessage(id, message).enqueue(object: Callback<Message> {
             override fun onResponse(call: Call<Message>, response: Response<Message>) {
                 if (response.isSuccessful) {
                     // Handle the successful response here

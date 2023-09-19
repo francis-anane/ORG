@@ -20,16 +20,15 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/teal_200"
+            android:background="@color/org_blue"
             app:popupTheme="@style/Theme.AppCompat.Light">
 
-            <Button
+            <ImageView
                 android:id="@+id/buttonAddOrganization"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/set_org"
-                android:textAllCaps="false"
-                android:textColor="@color/dark" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/organization"
+                />
         </androidx.appcompat.widget.Toolbar>
 
         <!--app:title="Org" -->
@@ -53,11 +52,11 @@
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:theme="@style/Theme.AppCompat.Light"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/Theme.AppCompat.Light">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/relativeLayout2"
@@ -68,54 +67,88 @@
 
                 <!-- Add Item4 -->
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/imageButtonMembers"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="10dp"
                     android:contentDescription="Item 1"
                     android:padding="8dp"
                     android:src="@mipmap/members"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/imageButtonMessage"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="72dp"
+                    android:layout_marginStart="40dp"
                     android:contentDescription="Item 2"
                     android:padding="8dp"
-                    android:src="@mipmap/inbox"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@mipmap/mail"
                     app:layout_constraintStart_toEndOf="@+id/imageButtonMembers"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/imageButtonAnnouncement"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="64dp"
                     android:contentDescription="Item 3"
                     android:padding="8dp"
                     android:src="@mipmap/announce"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButtonEvent"
                     app:layout_constraintStart_toEndOf="@+id/imageButtonMessage"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/imageButtonEvent"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
                     android:contentDescription="Item 4"
                     android:padding="8dp"
                     android:src="@mipmap/event"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.906"
-                    app:layout_constraintStart_toEndOf="@+id/imageButtonAnnouncement"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="members"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButtonMembers"
+                    app:layout_constraintStart_toStartOf="@+id/imageButtonMembers"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButtonMembers" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="chats"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButtonMessage"
+                    app:layout_constraintStart_toStartOf="@+id/imageButtonMessage"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButtonMessage" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="announcements"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButtonAnnouncement"
+                    app:layout_constraintStart_toStartOf="@+id/imageButtonAnnouncement"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButtonAnnouncement"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Events"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButtonEvent"
+                    app:layout_constraintStart_toStartOf="@+id/imageButtonEvent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButtonEvent"
+                    android:textSize="10sp"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.bottomappbar.BottomAppBar>
@@ -125,8 +158,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|bottom"
-            android:contentDescription="Fab"
             android:layout_marginBottom="100dp"
+            android:contentDescription="Fab"
             android:src="@mipmap/add_member" />
 
         <androidx.constraintlayout.widget.ConstraintLayout

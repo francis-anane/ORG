@@ -13,7 +13,7 @@ object CreateObJect{
     var isSuccessful = false
     fun member(member: Member){
         // Make api call to save member data with retrofit request
-        MyInstances.orgApiService.createMember(member).enqueue(object: Callback<Member> {
+        Instances.orgApiService.createMember(member).enqueue(object: Callback<Member> {
             override fun onResponse(call: Call<Member>, response: Response<Member>) {
                 if (response.isSuccessful) {
                     // Handle the successful response here
@@ -47,14 +47,14 @@ object CreateObJect{
 
     fun organization(organization: Organization){
         // Make api call to save organization data with retrofit request
-        MyInstances.orgApiService.createOrganization(organization).enqueue(object: Callback<Organization> {
+        Instances.orgApiService.createOrganization(organization).enqueue(object: Callback<Organization> {
             override fun onResponse(call: Call<Organization>, response: Response<Organization>) {
                 if (response.isSuccessful) {
                     // Handle the successful response here
                     isSuccessful = true
                     val data = response.body()
                     if (data != null) {
-                        println("Response Data: ${data.toString()}")
+                        Log.i("Response Data", data.toString())
                     } else {
                         // Handle the case where the response body is null
                         Log.i("Null:", "Got nothing")
@@ -65,8 +65,8 @@ object CreateObJect{
                     val errorCode = response.code()
                     val errorMessage = response.message()
                     // Handle the error code and message appropriately
-                    println("ErrorCode $errorCode")
-                    println("ErrorMessage $errorMessage")
+                    Log.i("ErrorCode", errorCode.toString())
+                    Log.i("ErrorMessage", errorMessage.toString())
                 }
             }
 
@@ -82,7 +82,7 @@ object CreateObJect{
 
     fun message(message: Message){
         // Make api call to save member data with retrofit request
-        MyInstances.orgApiService.createMessage(message).enqueue(object: Callback<Message> {
+        Instances.orgApiService.createMessage(message).enqueue(object: Callback<Message> {
             override fun onResponse(call: Call<Message>, response: Response<Message>) {
                 if (response.isSuccessful) {
                     isSuccessful = true

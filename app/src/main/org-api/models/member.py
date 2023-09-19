@@ -34,7 +34,10 @@ class Member(BaseModel):
         department = Column(String(128))
         role = Column(String(128))
         image = Column(String(256))
-        organization_id = Column(String(60), ForeignKey('organizations.organization_id'), nullable=False)
+        organization_id = Column(String(60), ForeignKey('organizations.id'), nullable=False)
+        attendance_id = Column(String(60), ForeignKey('attendances.id'), nullable=False)
+        event_id = Column(String(60), ForeignKey('events.id'), nullable=False)
+        message_id = Column(String(60), ForeignKey('messages.id'), nullable=False)
         
         # Establish organization relationship
         organization = relationship('Organization', foreign_keys=[organization_id])
@@ -49,6 +52,9 @@ class Member(BaseModel):
         role = ""
         image = ""
         organization_id = ""
+        attendance_id = ""
+        event_id = ""
+        message_id = ""
 
     def __init__(self, *args, **kwargs):
         """ Class constructor """
